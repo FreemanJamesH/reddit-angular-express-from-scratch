@@ -9,4 +9,8 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.post('/', function(req, res, next){
+  // knex('users').insert({username: req.body})
+})
+
 module.exports = router;
