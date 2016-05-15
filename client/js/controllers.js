@@ -3,10 +3,13 @@ app.controller('MainController', function($scope, dbService, $http) {
   $scope.vm = {};
 
   // its good to set the variable in the .then of the function so that the data will be available by the time you set the variable
-  dbService.getPosts().then(function(response) {
+  $scope.getPosts =  function(){ dbService.getPosts().then(function(response) {
     console.log('response in controller', response);
     $scope.vm.posts = response.data;
   })
+}
+
+$scope.getPosts();
 
 
   $scope.submit = function(title, author, image, description) {
@@ -18,6 +21,16 @@ app.controller('MainController', function($scope, dbService, $http) {
     }
     dbService.submitPost(obj).then(function(returnedData) {
       $scope.vm.posts.push(returnedData)
+    })
+  }
+
+  $scope.delete = function(postID){
+    var obj = {};
+    obj.id = postID;
+    console.log('Trying to delete postID: ' + postID);
+    dbService.delete(obj).then(function(response){
+      console.log(response);
+      $scope.getPosts();
     })
   }
 
