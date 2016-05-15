@@ -4,8 +4,8 @@ var knex = require('../db/knex')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  knex('users').then(function(users){
-    res.json(users)
+  knex('posts').then(function(posts){
+    res.json(posts)
   })
 });
 

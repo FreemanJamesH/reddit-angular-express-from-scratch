@@ -1,15 +1,15 @@
 <media>
-  <div ng-repeat="people in vm.message">
+  <div ng-repeat="post in vm.posts">
     <div>
       <div class="media-left">
         <a href="https://recodetech.files.wordpress.com/2016/04/blue-origiin.png?w=256&h=256&crop=1">
-          <img src="https://recodetech.files.wordpress.com/2016/04/blue-origiin.png?w=256&h=256&crop=1" alt="">
+          <img src="{{post.image_src}}" alt="">
         </a>
       </div>
       <div class="media-body">
-        <div class="media-heading"><h4>Post Title</h4></div>
-        <div>Posted by: James</div>
-        <p>Post Description</p>
+        <div class="media-heading"><h4>{{post.title}}</h4></div>
+        <div>Posted by: {{post.user_id}}</div>
+        <p>{{post.description}}</p>
         <div>
           <h4>Post info</h4>
         </div>

@@ -1,6 +1,6 @@
 app.service('dbService', function($http){
 
- this.getPeeps = function(){
+ this.getPosts = function(){
    return $http.get('http://localhost:3000/');
 }
 
