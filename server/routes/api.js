@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next){
   console.log('posting!')
   knex('posts').insert(req.body).returning('*').then(function(updatedDB){
-    res.json(updatedDB)
+    res.json(updatedDB[0])
   })
 })
 
