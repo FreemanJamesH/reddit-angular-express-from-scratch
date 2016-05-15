@@ -10,7 +10,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next){
-  // knex('users').insert({username: req.body})
+  console.log('posting!')
+  knex('posts').insert(req.body).returning('*').then(function(updatedDB){
+    res.json(updatedDB)
+  })
 })
 
 module.exports = router;

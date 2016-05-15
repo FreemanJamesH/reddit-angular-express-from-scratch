@@ -8,4 +8,11 @@ $scope.vm = {};
    $scope.vm.posts = response.data;
  })
 
+
+$scope.submit = function(title, author, image, description){
+   var obj = {title: title, user_id: 3, image_src: image, description:description}
+   console.log(dbService.submitPost(obj))
+
+}
+
 })
