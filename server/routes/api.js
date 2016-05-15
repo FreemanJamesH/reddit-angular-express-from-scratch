@@ -4,7 +4,7 @@ var knex = require('../db/knex')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  knex('posts').then(function(posts){
+  knex('posts').innerJoin('users', 'posts.user_id', 'users.id').then(function(posts){
     res.json(posts)
   })
 });
