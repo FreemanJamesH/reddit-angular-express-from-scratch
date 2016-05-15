@@ -9,7 +9,7 @@ app.controller('MainController', function($scope, dbService, $http) {
   })
 }
 
-$scope.getPosts();
+  $scope.getPosts();
 
 
   $scope.submit = function(title, author, image, description) {
@@ -27,11 +27,11 @@ $scope.getPosts();
   $scope.delete = function(postID){
     var obj = {};
     obj.id = postID;
-    console.log('Trying to delete postID: ' + postID);
     dbService.delete(obj).then(function(response){
-      console.log(response);
       $scope.getPosts();
     })
   }
+
+
 
 })

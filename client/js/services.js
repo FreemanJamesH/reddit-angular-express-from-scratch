@@ -11,7 +11,6 @@ this.submitPost = function(obj){
 }
 
 this.delete = function(obj){
-   console.log('This is the delete service. Request received. Trying to delete postID: ' + obj.id);
    return $http.post('http://localhost:3000/delete', obj).then(function(response){
       return response;
    })

@@ -17,7 +17,6 @@ router.post('/', function(req, res, next){
 })
 
 router.post('/delete', function(req,res,next){
-  console.log('deleting!: ' + req.body.id);
   knex('posts').where('id', req.body.id).del().then(function(){
     res.send('hello')
   })
