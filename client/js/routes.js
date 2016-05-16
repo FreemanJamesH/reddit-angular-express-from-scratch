@@ -12,4 +12,9 @@ app.config(function($routeProvider){
     controller: "SignupController"
   })
 
+  .when('/users', {
+    template: '<h1>Users<h1>',
+    controller: "SignupController"
+  })
+
 })
