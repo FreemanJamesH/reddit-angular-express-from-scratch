@@ -22,4 +22,16 @@ router.post('/delete', function(req,res,next){
   })
 })
 
+router.get('/signup', function(req, res, next)[
+  knex('users').then(function(users){
+    res.json(users)
+  })
+])
+
+router.post('/signup', function(req, res, next){
+  knex('users').insert(req.body).returning('*').then(function(userReturn){
+    res.json(userReturn[0])
+  })
+})
+
 module.exports = router;
