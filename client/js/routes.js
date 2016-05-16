@@ -13,7 +13,7 @@ app.config(function($routeProvider){
   })
 
   .when('/users', {
-    template: '<h1>Users<h1>',
+    templateUrl: '../partials/users.html',
     controller: "SignupController"
   })
 

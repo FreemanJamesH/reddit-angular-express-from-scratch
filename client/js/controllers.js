@@ -34,6 +34,17 @@ app.controller('MainController', function($scope, postService, $http) {
 
 app.controller('SignupController', function($scope, $http, signupService){
 
+  $scope.vm = {};
+
+  $scope.getUsers = function(){
+    signupService.getUsers().then(function(results){
+      $scope.vm.users = results.data;
+      console.log(results.data)
+    })
+  }
+
+  $scope.getUsers();
+
   $scope.submit = function(username, email, password){
     var obj = {
       username: username,
