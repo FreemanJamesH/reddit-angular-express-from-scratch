@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex')
+var bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -29,8 +31,36 @@ router.get('/users', function(req, res, next){
 })
 
 router.post('/signup', function(req, res, next){
-  knex('users').insert(req.body).returning('*').then(function(userReturn){
-    res.json(userReturn[0])
+  knex('users')
+    .whereRaw('lower(email) = ?', req.body.email.toLowerCase())
+    .count()
+    .first()
+    .then(function(result){
+      if (result.count === "0") {
+        var saltRounds = 4;
+        var passwordHash = bcrypt.hashSync(req.body.password, saltRounds)
+
+        knex('users').insert({
+          email: req.body.email,
+          username: req.body.username,
+          password: passwordHash
+        })
+        .returning('*').then(function(userReturn){
+          var user = (userReturn[0])
+          var token = jwt.sign({id: user.id}, 'secret')
+
+          res.json({
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            token: token
+          })
+      })
+    } else {
+      res.status(422).json({
+        errors: ['Email already taken']
+      })
+    }
   })
 })
 
