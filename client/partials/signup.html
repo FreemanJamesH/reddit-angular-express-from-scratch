@@ -1,0 +1,26 @@
+<div class="col-md-offset-3 col-md-6">
+  <form name="postForm" ng-show="true" ng-submit="submit(username, email, password)">
+  <div ng-class="{'has-error':postForm.username.$invalid && postForm.username.$dirty, 'has-success': postForm.username.$valid}" class="form-group">
+    <label class="control-label" for="username">Username:</label>
+    <input class="form-control" id="username" ng-model="username" type="text" name="username" placeholder="Username" ng-minlength="3" ng-maxlength="24" required>
+    <div class="error" ng-show="postForm.username.$invalid && postForm.username.$dirty">
+      Username must be between 3 and 24 characters.
+    </div>
+  </div>
+  <div ng-class="{'has-error':postForm.email.$invalid && postForm.email.$dirty, 'has-success': postForm.email.$valid}" class="form-group">
+    <label class=control-label class=control-label for="email">Email:</label>
+    <input class="form-control" id="email" ng-model="email" type="text" name="email" placeholder="Email" ng-minlength="3" ng-maxlength="72" required>
+    <div class="error" ng-show="postForm.email.$invalid && postForm.email.$dirty">
+      Email must be between 3 and 16 characters.
+    </div>
+  </div>
+  <div ng-class="{'has-error':postForm.password.$invalid && postForm.password.$dirty, 'has-success': postForm.password.$valid}" class="form-group">
+    <label class=control-label for="password">Password:</label>
+    <input type="text" class="form-control" id="password" ng-model="password" type="text" name="password" placeholder="Password" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/" required>
+    <div class="error" ng-show="postForm.password.$invalid && postForm.password.$dirty">
+      Please enter a valid password.
+    </div>
+  </div>
+  <input type="submit">
+</form>
+</div>
