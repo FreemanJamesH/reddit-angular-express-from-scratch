@@ -7,4 +7,9 @@ app.config(function($routeProvider){
     controller: "MainController"
   })
 
+  .when('/signup', {
+    templateUrl: '../partials/signup.html',
+    controller: "SignupController"
+  })
+
 })

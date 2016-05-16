@@ -1,9 +1,9 @@
-app.controller('MainController', function($scope, dbService, $http) {
+app.controller('MainController', function($scope, postService, $http) {
 
   $scope.vm = {};
 
   $scope.getPosts = function() {
-    dbService.getPosts().then(function(response) {
+    postService.getPosts().then(function(response) {
       $scope.vm.posts = response.data;
     })
   }
@@ -18,7 +18,7 @@ app.controller('MainController', function($scope, dbService, $http) {
       image_src: image,
       description: description
     }
-    dbService.submitPost(obj).then(function(returnedData) {
+    postService.submitPost(obj).then(function(returnedData) {
       $scope.vm.posts.push(returnedData)
     })
   }
@@ -26,11 +26,24 @@ app.controller('MainController', function($scope, dbService, $http) {
   $scope.delete = function(postID) {
     var obj = {};
     obj.id = postID;
-    dbService.delete(obj).then(function(response) {
+    postService.delete(obj).then(function(response) {
       $scope.getPosts();
     })
   }
+})
 
+app.controller('SignupController', function($scope, $http, signupService){
+
+  $scope.submit = function(username, email, password){
+    var obj = {
+      username: username,
+      email: email,
+      password: password
+    }
+    signupService.signup(obj).then(function(response){
+      console.log(response)
+    })
+  }
 
 
 })

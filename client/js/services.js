@@ -1,4 +1,4 @@
-app.service('dbService', function($http){
+app.service('postService', function($http){
 
  this.getPosts = function(){
    return $http.get('http://localhost:3000/');
@@ -16,5 +16,16 @@ this.delete = function(obj){
    })
 }
 
+
+});
+
+app.service('signupService', function($http){
+
+   this.signup = function(obj){
+      console.log('Service received this obj: Username: ' + obj.username + ' Email: ' + obj.email + ' Password:' + obj.password);
+      return $http.post('http://localhost:3000/signup', obj).then(function(response){
+         return response
+      })
+   }
 
 })
