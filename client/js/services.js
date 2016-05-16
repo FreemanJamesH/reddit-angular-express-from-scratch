@@ -26,7 +26,6 @@ app.service('signupService', function($http){
    }
 
    this.signup = function(obj){
-      console.log('Service received this obj: Username: ' + obj.username + ' Email: ' + obj.email + ' Password:' + obj.password);
       return $http.post('http://localhost:3000/signup', obj).then(function(response){
          return response
       })

@@ -7,7 +7,6 @@ app.controller('MainController', function($scope, postService, $http) {
       $scope.vm.posts = response.data;
     })
   }
-
   $scope.getPosts();
 
 
@@ -32,14 +31,13 @@ app.controller('MainController', function($scope, postService, $http) {
   }
 })
 
-app.controller('SignupController', function($scope, $http, signupService){
+app.controller('SignupController', function($scope, $http, $window, $location, signupService){
 
   $scope.vm = {};
 
   $scope.getUsers = function(){
     signupService.getUsers().then(function(results){
       $scope.vm.users = results.data;
-      console.log(results.data)
     })
   }
 
@@ -52,7 +50,8 @@ app.controller('SignupController', function($scope, $http, signupService){
       password: password
     }
     signupService.signup(obj).then(function(response){
-      console.log(response)
+      $window.localStorage.setItem('token', response.data.token);
+      $location.path('/')
     })
   }
 
