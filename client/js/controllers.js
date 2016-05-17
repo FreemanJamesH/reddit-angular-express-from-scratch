@@ -40,7 +40,6 @@ app.controller('SignupController', function($scope, $http, $window, $location, s
       $scope.vm.users = results.data;
     })
   }
-
   $scope.getUsers();
 
   $scope.submit = function(username, email, password){
@@ -54,6 +53,13 @@ app.controller('SignupController', function($scope, $http, $window, $location, s
       $location.path('/')
     })
   }
+})
+
+app.controller('ProfileController', function($scope, $http){
+
+  $scope.vm = {};
+
+  $scope.vm.userEmail = "youremail@email.com"
 
 
 })

@@ -17,4 +17,9 @@ app.config(function($routeProvider){
     controller: "SignupController"
   })
 
+  .when('/profile', {
+    templateUrl: '../partials/profile.html',
+    controller: "ProfileController"
+  })
+
 })
