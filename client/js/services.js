@@ -31,7 +31,7 @@ app.service('signupService', function($http){
       })
    }
 
-   this.getSingleUser = function(){
+   this.getSingleUser = function(obj){
       return $http.get('http://localhost:3000/user', obj).then(function(response){
          return response
       })
